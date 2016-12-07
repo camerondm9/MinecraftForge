@@ -1184,4 +1184,11 @@ public class ForgeHooks
 	{
 		MinecraftForge.EVENT_BUS.post(new BlockEvent.CropGrowEvent.Post(worldIn, pos, state, worldIn.getBlockState(pos)));
 	}
+	
+	public static boolean onFarmlandTrample(World world, BlockPos pos, IBlockState state, boolean def)
+	{
+	    BlockEvent ev = new BlockEvent.FarmlandTrampleEvent(world, pos, state);
+	    MinecraftForge.EVENT_BUS.post(ev);
+	    return (ev.getResult() == Event.Result.ALLOW || (ev.getResult() == Event.Result.DEFAULT && def));
+	}
 }

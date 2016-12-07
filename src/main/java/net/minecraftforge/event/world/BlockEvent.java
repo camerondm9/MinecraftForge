@@ -343,4 +343,22 @@ public class BlockEvent extends Event
             }
         }
     }
+    
+    /**
+     * Fired when a farmland block is about to be trampled.<br>
+     * <br>
+     * {@link Result#DEFAULT} will pass on to the vanilla trampling mechanics.<br>
+     * {@link Result#ALLOW} will force the block to be trampled.<br>
+     * {@link Result#DENY} will prevent the block from being trampled.<br>
+     * <br>
+     * This event is not {@link Cancelable}.
+     */
+    @HasResult
+    public static class FarmlandTrampleEvent extends BlockEvent
+    {
+        public FarmlandTrampleEvent(World world, BlockPos pos, IBlockState state)
+        {
+            super(world, pos, state);
+        }
+    }
 }
